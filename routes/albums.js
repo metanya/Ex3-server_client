@@ -26,6 +26,12 @@ const writeFile = (fileData, callback, filePath = dataPath, encoding = 'utf8') =
 
 
 module.exports = {
+
+    get_all_albums: function(req, res) {
+        readFile(data => {
+            res.send(JSON.parse(data));
+        });
+    },
     //READ - GET http://localhost:3001/albums/{albumId} 
     get_albums: function(req, res) {
         readFile(data => {
