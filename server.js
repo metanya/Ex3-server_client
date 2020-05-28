@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', routers);
 app.use('/client', express.static(path.join(__dirname, 'client')));
-
+app.use('/data', express.static(path.join(__dirname, 'data')));
 
 
 

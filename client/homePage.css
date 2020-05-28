@@ -1,3 +1,69 @@
 #title {
+    color: orangered;
+    font-size: 150%;
+    font-style: italic;
+}
+
+.middle {
     text-align: center;
+}
+
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+table,
+td,
+th {
+    background-color: rgba(142, 110, 173, 0.178);
+    width: 90%;
+    margin: auto;
+    border: 1px solid black;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 110%;
+    margin: auto;
+    color: azure;
+}
+
+td,
+th {
+    height: 70px;
+    border: 1px solid black;
+}
+
+#createAlbum {
+    margin-top: 1%;
+    text-align: center;
+}
+
+.TABLE_ROW_number,
+#TABLE_HEAD_number {
+    width: 10%;
+}
+
+.TABLE_ROW_name,
+#TABLE_HEAD_name {
+    width: 25%;
+}
+
+.TABLE_ROW_type,
+#TABLE_HEAD_type {
+    width: 20%;
+}
+
+.TABLE_ROW_buttons,
+#TABLE_HEAD_buttons {
+    width: 40%;
+}
+
+#editBtn {
+    text-align: center;
+    margin: auto;
 }
