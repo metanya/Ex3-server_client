@@ -150,20 +150,33 @@ function createAlbum() {
 }
 
 function deleteAlbum(id) {
-    $("#deleteAlbumBtn").event(function(event) {
-        $.ajax({
-            url: "http://localhost:3002/albums/" + id,
-            type: "DELETE",
-            success: function(data) {
-                location.reload();
+    bootbox.confirm({
+        title: "Delete Album?",
+        message: "Are you sure you want to delete this album?",
+        buttons: {
+            cancel: {
+                label: 'Cancel',
             },
-            error: function(jqXhr, textStatus, errorThrown) {
-                $("#errorSpace").replaceWith(
-                    `<div id="errorSpace">Error, failed to load the Album list</div>`
-                );
+            confirm: {
+                label: 'Confirm',
             },
-        });
-        event.preventDefault();
+        },
+        callback: function(result) {
+            if (result) {
+                $.ajax({
+                    url: "http://localhost:3001/albums/" + id,
+                    type: "DELETE",
+                    success: function(data) {
+                        location.reload();
+                    },
+                    error: function() {
+                        $("#test").replaceWith(
+                            `<div id="errorLoadAlbumList">Error, failed to load the Album list</div>`
+                        );
+                    },
+                });
+            }
+        },
     });
 }
 
