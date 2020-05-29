@@ -56,11 +56,11 @@ function createAlbumList(data) {
                         <button id="${data[i][0]}-${i + 1}" type="button" data-toggle="modal" data-target="#photoForm" onClick="createAddPhotoForm(${data[i][0]})">
                             Add Picture
                         </button>
-                        <button id="${data[i][0]}-${i + 2}" type="button" data-toggle="modal" data-target="#deleteAlbum" onClick="deleteAlbum(${data[i][0]})">
+                        <button id="${data[i][0]}-${i + 2}" type="button" onClick="deleteAlbum(${data[i][0]})">
                             Delete Album
                         </button>
-                    </td>
-                </div>
+                    </div>
+                </td>
             </tr>`;
     }
     albumList +=
@@ -83,7 +83,6 @@ function viewPictures(id) {
         success: function(data) {
             var links = [];
             $.each(data.pictures, function(index, entry) {
-                let i = index - 1;
                 links.push(entry.link);
             });
             if (links.length > 0)
@@ -96,7 +95,7 @@ function viewPictures(id) {
         },
         error: function() {
             $("#errorSpace").replaceWith(
-                `<div id="errorSpace">Error, failed to load the photos slider.</div>`
+                `<div id="errorSpace">Error, failed to get photos.</div>`
             );
         },
     });
@@ -105,34 +104,33 @@ function viewPictures(id) {
 function createPhotosSlider(links) {
     let slideShow = `
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="${links[0]}" >
-    </div>`;
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100 img-thumbnail" src="${links[0]}" >
+            </div>`;
 
     for (i = 1; i < links.length; i++) {
-        slideShow += `
-    <div class="carousel-item">
-      <img class="d-block w-100" src="${links[i]}" >
-    </div>
-    `;
+        slideShow +=
+            `<div class="carousel-item">
+                <img class="d-block w-100 img-thumbnail" src="${links[i]}" >
+            </div>`;
     }
 
     slideShow += `
-         </div>
-         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-             <span class="sr-only">Previous</span>
-             </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>`;
 
     $("#showPhotos").replaceWith(
@@ -164,12 +162,11 @@ function createAddPhotoForm(id) {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
-                // $('#albumModalPreview').modal('hide');
-                location.reload(); // need to find how to reload only div
+                location.reload();
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 $("#errorSpace").replaceWith(
-                    `<div id="errorSpace">Error, failed to load the Album list</div>`
+                    `<div id="errorSpace">Error, failed to ad picture to album.</div>`
                 );
             },
         });
@@ -201,12 +198,11 @@ function createAlbum() {
             processData: false,
             encode: true,
             success: function(data, textStatus, jQxhr) {
-                // $('#albumModalPreview').modal('hide');
-                location.reload(); // need to find how to reload only div
+                location.reload();
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 $("#errorSpace").replaceWith(
-                    `<div id="errorSpace">Error, failed to load the Album list</div>`
+                    `<div id="errorSpace">Error, failed to create new Album.</div>`
                 );
             },
         });
@@ -235,8 +231,8 @@ function deleteAlbum(id) {
                         location.reload();
                     },
                     error: function() {
-                        $("#test").replaceWith(
-                            `<div id="errorLoadAlbumList">Error, failed to load the Album list</div>`
+                        $("#errorSpace").replaceWith(
+                            `<div id="errorSpace">Error, failed to delete album.</div>`
                         );
                     },
                 });

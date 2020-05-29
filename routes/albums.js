@@ -46,8 +46,6 @@ module.exports = {
     // CREATE - POST http://localhost:3001/albums/{albumId} 
     create_photo: function(req, res) {
         readFile(data => {
-
-            //if it seem like http://localhost:3001/albums/  it should return error
             var values = {};
             values = JSON.parse(data);
             var id = req.params.id;

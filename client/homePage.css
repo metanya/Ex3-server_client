@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+#errorSpace {
+    color: blueviolet;
+}
+
 body {
     background-image: url('background.jpg');
     background-repeat: no-repeat;
