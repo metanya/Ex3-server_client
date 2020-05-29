@@ -31,7 +31,6 @@ app.use('/data', express.static(path.join(__dirname, 'data')));
 
 app.use('/addPhoto', express.static(path.join(__dirname, 'client/addPhoto.html')));
 app.use('/addAlbum', express.static(path.join(__dirname, 'client/addAlbum.html')));
-app.use('/deleteAlbum', express.static(path.join(__dirname, 'client/deleteAlbum.html')));
 
 
 

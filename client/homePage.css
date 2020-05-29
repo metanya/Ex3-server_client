@@ -44,6 +44,16 @@ th {
     text-align: center;
 }
 
+#showPhotos {
+    margin-top: 1%;
+    text-align: center;
+}
+
+.normalSize {
+    max-width: 50%;
+    height: 50%;
+}
+
 .TABLE_ROW_number,
 #TABLE_HEAD_number {
     width: 10%;
@@ -67,4 +77,8 @@ th {
 #editBtn {
     text-align: center;
     margin: auto;
+}
+
+#photosSlider {
+    visibility: hidden;
 }

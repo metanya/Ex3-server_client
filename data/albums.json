@@ -1,112 +1,27 @@
 {
-  "1": {
-    "name": "People, Jerusalem streets",
-    "type": "people",
-    "pictures": {
-      "1": {
-        "name": "name",
-        "link": "http://google.com",
-        "photographer": "matanya",
-        "id": "1"
-      },
-      "231507865": {
-        "name": "naomi create",
-        "link": "external or internal link",
-        "photographer": "Moshe cohen",
-        "id": "231507865"
-      },
-      "PIC123": {
-        "name": "Prayer, the Kotel H'amarvi",
-        "link": "external or internal link",
-        "photographer": "Moshe cohen",
-        "id": "PIC123"
-      },
-      "PIC456": {
-        "name": "Girls in the old city",
-        "link": "external or internal link",
-        "photographer": "Yona Levi",
-        "id": "PIC456"
-      }
+    "0": {
+        "name": "",
+        "type": "tester 1",
+        "id": "0",
+        "pictures": {
+            "5": {
+                "name": "name",
+                "link": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Hausziege_04.jpg",
+                "photographer": "dfdf",
+                "id": "5"
+            },
+            "3": {
+                "name": "goat",
+                "link": "https://cdn10.bostonmagazine.com/wp-content/uploads/sites/2/2019/09/goat-hyde-park-t.jpg",
+                "photographer": "goater",
+                "id": "3"
+            },
+            "4": {
+                "name": "goat",
+                "link": "https://a0.muscache.com/im/pictures/lombard/MtTemplate-989763-media_library/original/45c28eeb-0380-4dff-8731-f560bbd09a4b.jpeg?aki_policy=exp_md",
+                "photographer": "goater",
+                "id": "4"
+            }
+        }
     }
-  },
-  "2": {
-    "name": "Desert",
-    "type": "nature",
-    "pictures": {
-      "PIC777": {
-        "name": "Negev",
-        "link": "external or internal link",
-        "photographer": "Vered Mizrachi",
-        "id": "PIC777"
-      },
-      "PIC888": {
-        "name": "Sand everywhere",
-        "link": "external or internal link",
-        "photographer": "Yona Levi",
-        "id": "PIC888"
-      }
-    }
-  },
-  "3": {
-    "name": "People, Jerusalem streets",
-    "type": "people",
-    "pictures": {
-      "PIC123": {
-        "name": "Prayer, the Kotel H'amarvi",
-        "link": "external or internal link",
-        "photographer": "Moshe cohen",
-        "id": "PIC123"
-      },
-      "PIC456": {
-        "name": "Girls in the old city",
-        "link": "external or internal link",
-        "photographer": "Yona Levi",
-        "id": "PIC456"
-      }
-    },
-    "id": "3"
-  },
-  "4": {
-    "name": "",
-    "type": "fdfdf",
-    "id": "4"
-  },
-  "5": {
-    "name": "People, Jerusalem streets",
-    "type": "people",
-    "pictures": {
-      "PIC123": {
-        "name": "Prayer, the Kotel H'amarvi",
-        "link": "external or internal link",
-        "photographer": "Moshe cohen",
-        "id": "PIC123"
-      },
-      "PIC456": {
-        "name": "Girls in the old city",
-        "link": "external or internal link",
-        "photographer": "Yona Levi",
-        "id": "PIC456"
-      }
-    },
-    "id": "5"
-  },
-  "444444": {
-    "name": "People, Jerusalem streets",
-    "type": "people",
-    "pictures": {
-      "PIC123": {
-        "name": "Prayer, the Kotel H'amarvi",
-        "link": "external or internal link",
-        "photographer": "Moshe cohen",
-        "id": "PIC123"
-      },
-      "PIC456": {
-        "name": "Girls in the old city",
-        "link": "external or internal link",
-        "photographer": "Yona Levi",
-        "id": "PIC456"
-      }
-    },
-    "id": "444444"
-  }
 }

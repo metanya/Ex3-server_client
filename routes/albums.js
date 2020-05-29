@@ -88,6 +88,10 @@ module.exports = {
     // CREATE - POST http://localhost:3001/albums
     create_album: function(req, res) {
         readFile(data => {
+            if (req.body.name == undefined)
+                res.send("I didn't get the name.");
+            if (req.body.type == undefined)
+                res.send("I didn't get the type.");
             var values = {};
             values = JSON.parse(data);
             var i = 0;
