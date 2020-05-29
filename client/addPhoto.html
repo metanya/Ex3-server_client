@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add photo</title>
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="photoForm" tabindex="-1" role="dialog" aria-labelledby="photoFormLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="photo_form" name="photo_form" method="POST">
+                        <div class="form-group">
+                            <label for="name">name: </label>
+                            <input type="text" class="form-control" id="photoFormName" name="photoFormName" placeholder="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="link">link</label>
+                            <input type="url" class="form-control" id="photoFormLink" name="photoFormLink" placeholder="link" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="photographer">photographer</label>
+                            <input type="text" class="form-control" id="photoFormPhotographer" name="photoFormPhotographer" placeholder="photographer" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

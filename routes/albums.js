@@ -46,8 +46,7 @@ module.exports = {
     // CREATE - POST http://localhost:3001/albums/{albumId} 
     create_photo: function(req, res) {
         readFile(data => {
-            if (!req.body.id)
-                return res.send("There is no ID.");
+
             //if it seem like http://localhost:3001/albums/  it should return error
             var values = {};
             values = JSON.parse(data);
@@ -56,7 +55,11 @@ module.exports = {
                 return res.send("Error.")
             var album = values[id]
             var pictures = album["pictures"];
-            pictures[req.body.id] = req.body;
+            var i = 1;
+            while (pictures[i] != undefined)
+                i++;
+            pictures[i] = req.body;
+            pictures[i].id = i + "";
 
             writeFile(JSON.stringify(values, null, 2), () => {
                 res.status(200).send('New photo added to album.');
@@ -64,7 +67,7 @@ module.exports = {
         });
     },
 
-    // DELETE - POST http://localhost:3001/albums/{albumId} 
+    // DELETE - DELETE http://localhost:3001/albums/{albumId} 
     delete_album: function(req, res) {
 
         readFile(data => {
@@ -88,13 +91,10 @@ module.exports = {
             var values = {};
             values = JSON.parse(data);
             var i = 0;
-            // while (values[i] != undefined)
-            //     i++;
-            // values[i] = i;
-            if (values[req.body.id] == undefined)
-                values[req.body.id] = req.body;
-            else
-                res.send("the ID is alreasy exist");
+            while (values[i] != undefined)
+                i++;
+            values[i] = req.body;
+            values[i].id = i + "";
 
             writeFile(JSON.stringify(values, null, 2), () => {
                 res.status(200).send('New album added.');

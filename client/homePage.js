@@ -53,10 +53,10 @@ function createAlbumList(data) {
                         <button id="${data[i][0]}-${i}" type="button" onClick="viewPictures(${data[i][0]})">
                             View Pictures List
                         </button>
-                        <button id="${data[i][0]}-${i + 1}" type="button" onClick="addPictures(${data[i][0]})">
+                        <button id="${data[i][0]}-${i + 1}" type="button" data-toggle="modal" data-target="#photoForm" onClick="createAddPhotoForm(${data[i][0]})">
                             Add Picture
                         </button>
-                        <button id="${data[i][0]}-${i + 2}" type="button" onClick="deleteAlbum(${data[i][0]})">
+                        <button id="${data[i][0]}-${i + 2}" type="button" data-toggle="modal" data-target="#deleteAlbum" onClick="deleteAlbum(${data[i][0]})">
                             Delete Album
                         </button>
                     </td>
@@ -67,7 +67,7 @@ function createAlbumList(data) {
         ` </tbody>
         </table>
             <div id="createAlbum">
-                <button id="createAlbumBtn" class="btn btn-warning" onClick="createAlbum()">
+                <button id="createAlbumBtn" class="btn btn-warning" data-toggle="modal" data-target="#addAlbum" onClick="createAlbum()">
                     CreateAlbum
                 </button>
             </div>`;
@@ -76,8 +76,114 @@ function createAlbumList(data) {
     );
 }
 
+function createAddPhotoForm(id) {
+    $("form[name='photo_form']").validate({
+        rules: {
+            id_field: {
+                required: true,
+            },
+        },
+        messages: {},
+    });
+    $("#photo_form").submit(function(event) {
+        if (!$("#photo_form").valid()) return;
+        $.ajax({
+            type: "POST", // define the type of HTTP verb we want to use (POST for our form)
+            url: "http://localhost:3001/albums/" + id, // the url where we want to POST
+            contentType: "application/json",
+            data: JSON.stringify({
+                name: $("#photoFormName").val(),
+                link: $("#photoFormLink").val(),
+                photographer: $("#photoFormPhotographer").val(),
+                id: "",
+            }),
+            processData: false,
+            encode: true,
+            success: function(data, textStatus, jQxhr) {
+                // $('#albumModalPreview').modal('hide');
+                location.reload(); // need to find how to reload only div
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                $("#errorSpace").replaceWith(
+                    `<div id="errorSpace">Error, failed to load the Album list</div>`
+                );
+            },
+        });
+        event.preventDefault();
+    });
+}
+
+function createAlbum() {
+    $("form[name='albumForm']").validate({
+        rules: {
+            id_field: {
+                required: true,
+            },
+        },
+        messages: {},
+    });
+    $("#albumForm").submit(function(event) {
+        if (!$("#albumForm").valid()) return;
+        $.ajax({
+            type: "POST", // define the type of HTTP verb we want to use (POST for our form)
+            url: "http://localhost:3001/albums", // the url where we want to POST
+            contentType: "application/json",
+            data: JSON.stringify({
+                name: $("#photoFormName").val(),
+                type: $("#albumFormType").val(),
+                id: "",
+            }),
+            processData: false,
+            encode: true,
+            success: function(data, textStatus, jQxhr) {
+                // $('#albumModalPreview').modal('hide');
+                location.reload(); // need to find how to reload only div
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                $("#errorSpace").replaceWith(
+                    `<div id="errorSpace">Error, failed to load the Album list</div>`
+                );
+            },
+        });
+        event.preventDefault();
+    });
+}
+
+function deleteAlbum(id) {
+    $("#deleteAlbumBtn").event(function(event) {
+        $.ajax({
+            url: "http://localhost:3002/albums/" + id,
+            type: "DELETE",
+            success: function(data) {
+                location.reload();
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                $("#errorSpace").replaceWith(
+                    `<div id="errorSpace">Error, failed to load the Album list</div>`
+                );
+            },
+        });
+        event.preventDefault();
+    });
+}
+
+function loadPictureForm() {
+    $("#PictureForm").load("http://localhost:3001/addPhoto");
+}
+
+function loadAlbumForm() {
+    $("#AlbumForm").load("http://localhost:3001/addAlbum");
+}
+
+function loadDeleteAlbum() {
+    $("#DeleteAlbum").load("http://localhost:3001/deleteAlbum");
+}
+
 onLoad = function() {
     createTableWithAlbums();
+    loadPictureForm();
+    loadAlbumForm();
+    loadDeleteAlbum();
 };
 
 $("document").ready(onLoad);
