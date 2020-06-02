@@ -86,3 +86,7 @@ th {
 #photosSlider {
     visibility: hidden;
 }
+
+#showPhotos {
+    color: rgb(235, 3, 3);
+}
